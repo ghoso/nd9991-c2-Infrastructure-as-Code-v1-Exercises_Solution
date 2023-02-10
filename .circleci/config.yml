@@ -1,21 +1,12 @@
 version: 2.1
 
 jobs:
-  myjobs1:
+  create_infrastructure:
     docker:
-      - image: cimg/base:stable
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-    create_infrastructure:
-      docker:
-        - image: amazon/aws-cli
-      steps:
-        - checkout
-        - run:
           name: CreateCloudformation Stack
           command: |
             aws cloudformation deploy \
