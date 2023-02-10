@@ -2,18 +2,26 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: ND9991 C3 L4 
 Resources:
+  MainVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: '192.168.0.0/24'
+      Tags:
+        - Key: Name
+          Value: "udacity-vpc"
   EC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: 'udacity-keypair'
-      ImageId: 'ami-09cd747c78a9add63' # you may need to find out what instance types are available in your region - use https://cloud-images.ubuntu.com/locator/ec2/
+      ImageId: 'ami-09cd747c78a9add63'
       InstanceType: t3.micro
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: Enable SSH access via port 22
+      VpcId: !Ref MainVPC
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: '22'
