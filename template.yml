@@ -21,8 +21,6 @@ Resources:
   EC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
-      SecurityGroups:
-        - !Ref InstanceSecurityGroup
       KeyName: 'udacity-keypair'
       ImageId: 'ami-09cd747c78a9add63'
       InstanceType: t3.micro
