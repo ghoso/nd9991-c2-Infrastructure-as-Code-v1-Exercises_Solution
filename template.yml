@@ -26,7 +26,14 @@ Resources:
       KeyName: 'udacity-keypair'
       ImageId: 'ami-09cd747c78a9add63'
       InstanceType: t3.micro
-      SubnetId: 'subnet-00e9ca18bc2ee6e48'
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          GroupSet:
+            - Ref: "InstanceSecurityGroup"
+          SubnetId:
+            Ref: "PublicSubnet1"
+
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
