@@ -17,6 +17,7 @@ Resources:
       KeyName: 'udacity-keypair'
       ImageId: 'ami-09cd747c78a9add63'
       InstanceType: t3.micro
+      VpcId: !Ref MainVPC
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
