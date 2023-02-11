@@ -11,7 +11,7 @@ Resources:
   PublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: 'us-east-1a'
+      AvailabilityZone: 'us-east-1b'
       CidrBlock: '192.168.0.0/24'
       MapPublicIpOnLaunch: true
       Tags:
