@@ -18,6 +18,28 @@ Resources:
         - Key: Name
           Value: 'udacity-subnet1'
       VpcId: !Ref MainVPC
+  InternetGW:
+    Type: AWS::EC2::InternetGateway
+  AttachInternetGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref MainVPC
+      InternetGatewayId: !Ref InternetGW
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      Tags:
+        - Key: Name
+          Value: "Public Route Table"
+      VpcId: !Ref MainVPC
+  PublicInternetRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId:
+        Ref: PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: InternetGW
   EC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
