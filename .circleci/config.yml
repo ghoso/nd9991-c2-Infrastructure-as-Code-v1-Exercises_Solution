@@ -28,7 +28,7 @@ jobs:
           name: ssh key
           command: |
             ls -l ~/.ssh
-            cat ~/.ssh/*
+            cat ~/.ssh/id_rsa.pub
       - run:
           name: Run playbook and configure server
           command: |
