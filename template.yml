@@ -36,10 +36,10 @@ Resources:
     Type: AWS::EC2::Route
     Properties:
       RouteTableId:
-        Ref: PublicRouteTable
+        Ref: "PublicRouteTable"
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId:
-        Ref: InternetGW
+        Ref: "InternetGW"
   EC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
